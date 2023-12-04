@@ -3,10 +3,9 @@ import kotlin.math.max
 fun main() {
     // return the max number of cubes, by type, from all sets
     fun getMaxCubes(sets: String): Map<String, Int> {
-        val pattern = "\\s(\\d+)\\s(blue|green|red)".toRegex()
-        val red = Regex(" (\\d+) red").findAll(sets)?.map { it.groupValues[1].toInt() }?.max() ?: 0
-        val green = Regex(" (\\d+) green").findAll(sets)?.map { it.groupValues[1].toInt() }?.max() ?: 0
-        val blue = Regex(" (\\d+) blue").findAll(sets)?.map { it.groupValues[1].toInt() }?.max() ?: 0
+        val red = Regex(" (\\d+) red").findAll(sets).map { it.groupValues[1].toInt() }.max() ?: 0
+        val green = Regex(" (\\d+) green").findAll(sets).map { it.groupValues[1].toInt() }.max() ?: 0
+        val blue = Regex(" (\\d+) blue").findAll(sets).map { it.groupValues[1].toInt() }.max() ?: 0
         return mapOf("red" to red, "green" to green, "blue" to blue)
     }
 
