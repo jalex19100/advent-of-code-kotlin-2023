@@ -87,7 +87,7 @@ fun main() {
             }
         }
         println(seeds)
-        return seeds.minOf { it } 
+        return seeds.minOf { it }
     }
 
     // test if implementation meets criteria from the description, like:
