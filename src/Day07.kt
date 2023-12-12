@@ -16,7 +16,7 @@ fun main() {
 
     val cardIndex1 = listOf('1', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A')
     val cardIndex2 = listOf('J', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'Q', 'K', 'A')
-
+w
     data class Hand(val cards: String, val groups: Map<Char, Int>, val bid: Int, val part2: Boolean)
 
     fun Hand(input: String, part2: Boolean = false): Hand {
