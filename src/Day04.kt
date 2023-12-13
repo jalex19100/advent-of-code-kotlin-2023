@@ -1,10 +1,12 @@
+import kotlin.math.pow
+
 fun main() {
     fun findMatches(s: String): Set<String> {
         val numRegex = Regex("\\d+")
         val winningNumbers = numRegex.findAll(s.split(":")[1].split("|")[0]).map { it.value }.toList()
         val scratchedNumbers = numRegex.findAll(s.split(":")[1].split("|")[1]).map { it.value }.toList()
         // println("winningNumbers: $winningNumbers, scratchNumbers: $scratchedNumbers")
-        return winningNumbers.intersect(scratchedNumbers)
+        return winningNumbers.intersect(scratchedNumbers.toSet())
     }
 
     fun part1(input: List<String>): Int {
@@ -13,7 +15,7 @@ fun main() {
         // println("matches: $matches")
         val baseInt = 2
         val power = matches.count() - 1
-        return Math.pow(baseInt.toDouble(), power.toDouble()).toInt() + part1(input.drop(1))
+        return baseInt.toDouble().pow(power.toDouble()).toInt() + part1(input.drop(1))
     }
 
     fun part2(input: List<String>, wonCopyCounters: Map<Int, Int> = emptyMap()): Int {

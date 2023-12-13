@@ -22,8 +22,7 @@ fun main() {
     fun Hand(input: String, part2: Boolean = false): Hand {
         val (cards, bid) = input.split(" ")
         val groups = if (part2 && cards.contains('J')) {
-            // TODO :-o hacked to pieces
-            val highCard = if (cards.equals("JJJJJ")) 'A'
+            val highCard = if (cards == "JJJJJ") 'A'
             else cards.replace("J", "").toList().sortedWith(compareBy<Char> { cardIndex2.indexOf(it) }).groupingBy { it }.eachCount()
                 .maxBy { it.value }.key
             cards.replace('J', highCard).toList().groupingBy { it }.eachCount()
@@ -49,14 +48,12 @@ fun main() {
 
     fun part1(input: List<String>): Int {
         val hands = input.map { Hand(it) }.sortedWith(handComparator)
-        //        println("$hands")
         val winnings = hands.foldIndexed(0) { idx, acc, hand -> acc + hand.bid * (idx + 1) }
         return winnings
     }
 
     fun part2(input: List<String>): Int {
         val hands = input.map { Hand(it, true) }.sortedWith(handComparator)
-        //        println("$hands")
         val winnings = hands.foldIndexed(0) { idx, acc, hand -> acc + hand.bid * (idx + 1) }
         return winnings
     }
